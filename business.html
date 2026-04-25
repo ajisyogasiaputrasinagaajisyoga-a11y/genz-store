@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>GenZ Store</title>
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    margin: 0;
+    color: white;
+}
+
+/* Login */
+#loginPage, #dashboard {
+    display: none;
+    text-align: center;
+    padding: 50px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+button {
+    background: #ff7eb3;
+    color: white;
+    cursor: pointer;
+}
+
+/* Produk */
+.product {
+    background: white;
+    color: black;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 10px;
+    display: inline-block;
+    width: 200px;
+}
+
+.discount {
+    color: red;
+    font-weight: bold;
+}
+
+.product img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.product button {
+    background: red;
+    color: white;
+    margin-top: 10px;
+}
+
+.product button:first-of-type {
+    background: #00c853;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage">
+    <h1>Login GenZ Store</h1>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+    <h1>🛍️ GenZ Store</h1>
+
+    <h3>Tambah Produk</h3>
+    <input type="text" id="productName" placeholder="Nama Produk">
+    <input type="number" id="productPrice" placeholder="Harga">
+    <input type="number" id="productDiscount" placeholder="Diskon (%)">
+    <input type="file" id="productImage">
+    <button onclick="addProduct()">Tambah</button>
+
+    <h3>Daftar Produk</h3>
+    <div id="productList"></div>
+
+    <br>
+    <button onclick="logout()">Logout</button>
+</div>
+
+<script>
+// LOGIN SYSTEM
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "admin" && pass === "123") {
+        localStorage.setItem("login", "true");
+        showDashboard();
+    } else {
+        alert("Login gagal!");
+    }
+}
+
+function logout() {
+    localStorage.removeItem("login");
+    location.reload();
+}
+
+function showDashboard() {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+}
+
+// PRODUK
+let products = JSON.parse(localStorage.getItem("products")) || [];
+
+function addProduct() {
+    let name = document.getElementById("productName").value;
+    let price = parseInt(document.getElementById("productPrice").value);
+    let discount = parseInt(document.getElementById("productDiscount").value);
+    let imageInput = document.getElementById("productImage");
+
+    let file = imageInput.files[0];
+
+    if (!file) {
+        alert("Upload gambar dulu!");
+        return;
+    }
+
+    let reader = new FileReader();
+
+    reader.onload = function(e) {
+        let finalPrice = price - (price * discount / 100);
+
+        let product = {
+            name,
+            price,
+            discount,
+            finalPrice,
+            image: e.target.result
+        };
+
+        products.push(product);
+        localStorage.setItem("products", JSON.stringify(products));
+        displayProducts();
+    };
+
+    reader.readAsDataURL(file);
+}
+
+function buyProduct(name, price) {
+    alert("Kamu membeli " + name + " seharga Rp " + price);
+}
+
+function displayProducts() {
+    let list = document.getElementById("productList");
+    list.innerHTML = "";
+
+    products.forEach((p, index) => {
+        list.innerHTML += `
+        <div class="product">
+            <img src="${p.image}" style="width:100%; border-radius:10px;">
+            <h4>${p.name}</h4>
+            <p>Harga: Rp ${p.price}</p>
+            <p class="discount">Diskon: ${p.discount}%</p>
+            <p><b>Rp ${p.finalPrice}</b></p>
+
+            <button onclick="buyProduct('${p.name}', ${p.finalPrice})">Buy</button>
+            <button onclick="deleteProduct(${index})">Hapus</button>
+        </div>
+        `;
+    });
+}
+
+// AUTO LOAD
+if(localStorage.getItem("login") === "true") {
+    showDashboard();
+} else {
+    document.getElementById("loginPage").style.display = "block";
+}
+
+displayProducts();
+</script>
+
+</body>
+</html>
