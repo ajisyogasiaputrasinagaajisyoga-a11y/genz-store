@@ -1,0 +1,129 @@
+<html>
+<head>
+    <title>ajis sinaga.id.com</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            animation: bgGanti 8s infinite;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 0;
+            animation: gantiwarna 3s infinite;
+            text-shadow: 0 0 15px lime;
+        }
+
+        @keyframes gantiwarna {
+            0% {color: red;}
+            25% {color: yellow;}
+            50% {color: lime;}
+            75% {color: cyan;}
+            100% {color: red;}
+        }
+
+        @keyframes bgGanti {
+            0% {background: #1a1a1a;}
+            50% {background: #001133;}
+            100% {background: #1a1a1a;}
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            background: cyan;
+            color: black;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 18px;
+            color: #ccc;
+            margin-top: 5px;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+            border-left: 4px solid cyan;
+        }
+
+        .navbar {
+        display: flex;
+        justify-content: flex-end; /* ini yang bikin ke kanan */
+        gap: 20px;
+        background: rgba(0,0,0,0.7);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="business.html">Business</a>
+    <a href="service.html">Service</a>
+    <a href="about.html">About</a>
+    <a href="login.html">Login</a>
+    </div>
+
+    <h1>Welcome to hotel Medan</h1>
+
+    <p class="tagline">Tidur Nyaman, Harga udah pasti murah meriah</p>
+
+    <div class="section">
+        <h2>Fasilitas Hotel</h2>
+        <ul>
+            <li>Wifi gratis anti lemot</li>
+            <li>Kolam renang view langsung ke danau</li>
+            <li>Kaca hologram</li>
+            <li>Tempat santai, ngopi, dan berjemur</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Type Kamar</h2>
+        <h3>Standard Room - 100/malam</h3>
+        <p>Kasur queen, kamar mandi dalam, TV, meja belajar estetik</p>
+    </div>
+
+</body>
+</html>

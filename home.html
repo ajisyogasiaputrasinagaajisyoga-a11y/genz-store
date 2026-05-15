@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Hotel Premium</title>
+<title>Hotel Medan - Home</title>
 
 <style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #001133, #003366);
+        background: #0b1026;
         color: white;
     }
 
@@ -40,12 +40,18 @@
 
     /* HERO */
     .hero {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        padding: 60px 20px;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                    url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb') no-repeat center/cover;
     }
 
     .hero h1 {
-        font-size: 40px;
+        font-size: 50px;
         color: cyan;
         text-shadow: 0 0 20px cyan;
     }
@@ -53,40 +59,53 @@
     .hero p {
         font-size: 18px;
         color: #ddd;
+        max-width: 600px;
     }
 
-    /* CARD */
-    .container {
+    .btn {
+        margin-top: 20px;
+        padding: 12px 25px;
+        background: cyan;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 8px;
+    }
+
+    .btn:hover {
+        background: lime;
+    }
+
+    /* SECTION */
+    .section {
+        padding: 40px;
+        text-align: center;
+    }
+
+    .cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
-        padding: 30px;
+        margin-top: 20px;
     }
 
     .card {
-        background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.08);
         padding: 20px;
         border-radius: 15px;
         transition: 0.3s;
-        border: 1px solid rgba(255,255,255,0.2);
     }
 
     .card:hover {
         transform: translateY(-10px);
         background: rgba(0,255,255,0.2);
-        box-shadow: 0 0 20px cyan;
+        box-shadow: 0 0 15px cyan;
     }
 
-    .card h3 {
-        color: cyan;
-    }
-
-    /* FOOTER */
     .footer {
         text-align: center;
         padding: 20px;
         color: #aaa;
-        font-size: 14px;
     }
 </style>
 </head>
@@ -100,41 +119,46 @@
     <a href="service.html">Service</a>
     <a href="about.html">About</a>
     <a href="login.html">Login</a>
+    
 </div>
 
 <!-- HERO -->
 <div class="hero">
-    <h1>Business Hotel Premium</h1>
-    <p>Tempat terbaik untuk kerja, meeting, dan kenyamanan bisnis Anda</p>
+    <h1>Hotel Medan Premium</h1>
+    <p>Penginapan nyaman, modern, dan mewah untuk liburan & bisnis Anda</p>
+
+    <button class="btn" onclick="alert('Booking segera hadir!')">
+        Booking Sekarang
+    </button>
 </div>
 
-<!-- CARD SECTION -->
-<div class="container">
+<!-- SECTION -->
+<div class="section">
+    <h2>Kenapa Memilih Kami?</h2>
 
-    <div class="card">
-        <h3>Meeting Room VIP</h3>
-        <p>Ruangan eksklusif untuk rapat bisnis dengan fasilitas lengkap.</p>
+    <div class="cards">
+
+        <div class="card">
+            <h3>⭐ Kamar Mewah</h3>
+            <p>Desain modern dan nyaman seperti hotel bintang 5.</p>
+        </div>
+
+        <div class="card">
+            <h3>📶 WiFi Cepat</h3>
+            <p>Internet stabil tanpa gangguan untuk semua tamu.</p>
+        </div>
+
+        <div class="card">
+            <h3>🍽️ Makanan Enak</h3>
+            <p>Menu hotel lengkap dengan rasa premium.</p>
+        </div>
+
     </div>
-
-    <div class="card">
-        <h3>WiFi Super Cepat</h3>
-        <p>Koneksi internet stabil tanpa lemot, cocok untuk kerja online.</p>
-    </div>
-
-    <div class="card">
-        <h3>Work Space Nyaman</h3>
-        <p>Area kerja tenang dengan desain modern dan estetik.</p>
-    </div>
-
-    <div class="card">
-        <h3>24 Jam Service</h3>
-        <p>Pelayanan hotel siap membantu kapan saja tanpa batas waktu.</p>
-    </div>
-
 </div>
 
+<!-- FOOTER -->
 <div class="footer">
-    © 2026 Hotel Medan Business - All Rights Reserved
+    © 2026 Hotel Medan Premium
 </div>
 
 </body>
